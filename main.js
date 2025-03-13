@@ -15,7 +15,7 @@ app.whenReady().then(() => {
         }
     });
     mainWindow.setMenu(null)
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
 
     mainWindow.loadFile('resources/auth.html');
 });
