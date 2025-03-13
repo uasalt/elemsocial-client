@@ -1,0 +1,359 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Element</title>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+</head>
+<style>
+@font-face {
+    font-family: 'Monaco';
+    src: url('UI/Fonts/Bounded-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: rgb(15, 15, 15);
+    font-family: 'Monaco';
+    color: rgb(210, 210, 210);
+    margin: 0;
+}
+    
+#auth {
+    color: white;
+    position: fixed;
+    width: 370px;
+    border-radius: 10px;
+    padding: 30px;
+    height: 230px;
+    text-align: center;
+    box-shadow: 15px 15px 50px 8px rgb(50, 50, 50);
+    transition: margin-left 0.5s ease, opacity 0.5s;
+    input {
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        padding-left: 10px;
+        background-color: rgb(40, 40, 40);
+        color: var(--text-color);
+    }
+    h2 {
+        font-size: 28px;
+    }
+    #confirm {
+        margin-top: 20px;
+        border: none;
+        background-color: rgb(30, 95, 216);
+        width: 184px;
+        border-radius: 5px;
+        height: 30px;
+        color: var(--text-color);
+        cursor: pointer;
+    }
+    #method-other {
+        border: none;
+        background-color: transparent;
+        height: 30px;
+        width: 184px;
+        margin-top: 5px;
+        color: rgb(130, 130, 130);
+        cursor: pointer;
+    }
+}
+
+.authorize-opened {
+    margin-left: 0px;
+    opacity: 1;
+}
+
+#auth.authorize-closed {
+    margin-left: 370px;
+    opacity: 0;
+}
+
+#reg.authorize-closed {
+    margin-left: -370px;
+    opacity: 0;
+}
+
+#reg {
+    color: white;
+    position: fixed;
+    width: 370px;
+    border-radius: 10px;
+    padding: 30px;
+    height: 300px;
+    text-align: center;
+    box-shadow: 15px 15px 50px 8px rgb(50, 50, 50);
+    transition: margin-left 0.5s ease, opacity 0.5s;
+    input {
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        padding-left: 10px;
+        background-color: rgb(40, 40, 40);
+        color: var(--text-color);
+    }
+    h2 {
+        font-size: 28px;
+    }
+    #confirm {
+        margin-top: 20px;
+        border: none;
+        background-color: rgb(30, 95, 216);
+        width: 184px;
+        border-radius: 5px;
+        height: 30px;
+        color: var(--text-color);
+        cursor: pointer;
+    }
+    #method-other {
+        border: none;
+        background-color: transparent;
+        height: 30px;
+        width: 184px;
+        margin-top: 5px;
+        color: rgb(130, 130, 130);
+        cursor: pointer;
+    }
+}
+
+#lastUsers {
+    position: relative;
+    width: 320px;
+    height: 60px;
+    text-align: center;
+    background-color: rgb(20, 20, 20);
+    padding: 5px;
+    padding-bottom: 10px;
+    border-radius: 0 0 10px 10px;
+    border: 1px rgb(10, 10, 10) solid;
+    .user {
+        background-color: transparent;
+        border: none;
+        color: rgb(210, 210, 210);
+        img {
+            border-radius: 40px;
+            width: 40px;
+            height: 40px;
+        }
+        p {
+            color: rgb(120, 120, 120);
+            margin-top: 3px;
+        }
+    }
+    #show_profile {
+        position: fixed;
+        z-index: 999;
+        border: 1px rgb(40, 40, 40) solid;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(20, 20, 20);
+        top: 90px;
+        .subscribers {
+            p {
+                margin: 0;
+            }
+            .title {
+                color: rgb(110, 110, 110);
+            }
+            .left {
+                background-color: rgb(30, 30, 30);
+                border: 1px rgb(40, 40, 40) solid;
+                border-radius: 10px 0 0 10px;
+                padding: 10px;
+            }
+            .center {
+                background-color: rgb(30, 30, 30);
+                border: 1px rgb(40, 40, 40) solid;
+                padding: 10px;
+            }
+            .right {
+                background-color: rgb(30, 30, 30);
+                border: 1px rgb(40, 40, 40) solid;
+                border-radius: 0 10px 10px 0;
+                padding: 10px;
+            }
+            .count {
+                color: rgb(210, 210, 210);
+            }
+        }
+        .description {
+            background-color: rgb(30, 30, 30);
+            border: 1px rgb(40, 40, 40) solid;
+            border-radius: 10px;
+            padding: 8px;
+            text-align: left;
+            margin-top: 5px;
+            font-size: 14px;
+            width: 230px;
+            margin-left: 48px;
+            .Title {
+                color: rgb(130, 130, 130);
+                font-size: 11px;
+            }
+        }
+        .icons {
+            overflow-x: scroll;
+            margin-top: 5px;
+            ::-webkit-scrollbar {
+                display: none;
+            }
+            .icon {
+                background-color: rgb(30, 30, 30);
+                border: 1px rgb(40, 40, 40) solid;
+                border-radius: 10px;
+                text-align: left;
+                img {
+                    position: absolute;
+                    height: 25  px;
+                    width: 25px;
+                    margin-top: 5px;
+                }
+                p {
+                    margin-top: 5px;
+                    margin-left: 35px;
+                }
+            }
+        }
+        .images {
+            .cover {
+                border-radius: 10px;
+                border: 1px rgb(40, 40, 40) solid;
+                width: 340px;
+                height: 135px;
+            }
+            .avatar {
+                position: absolute;
+                top: 80px;
+                left: 125px;
+                border-radius: 100px;
+                width: 100px;
+                height: 100px;
+                border: 4px rgb(40, 40, 40) solid;
+            }
+        }
+        .air {
+            margin-top: 40px;
+        }
+        #userIcons {
+            height: 18px;
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+        .nameContainer {
+            display: inline-flex;
+            .name {
+                margin: 0;
+                margin-right: 5px;
+                color: rgb(220, 220, 220);
+            }
+        }
+        .username {
+            color: rgb(220, 220, 220);
+            font-size: 12px;
+            margin-top: 3px;
+        }
+    }
+}
+#notification {
+    position: fixed;
+    border-radius: 10px 0 0 0;
+    background-color: rgb(20, 20, 20);
+    z-index: 99999999999;
+    border: 1px rgb(40, 40, 40) solid;
+    width: 300px;
+    padding: 8px;
+    transition: top 0.3s;
+    .title {
+        position: absolute;
+        margin: 0;
+        top: 10px;
+        left: 60px;
+    }
+    .description {
+        position: absolute;
+        margin: 0;
+        top: 35px;
+        left: 60px;
+        font-size: 12px;
+        color: rgb(90, 90, 90);
+    }
+    img {
+        width: 40px;
+    }
+}
+</style>
+<body>
+
+<div id="lastUsers" style="display: none;">
+    <div id="show_profile" style="transition: 0.3s;opacity: 0;">
+        <div class="images">
+            <img src="https://elemsocial.com/Content/Covers/Cover_2024-08-07 02_07_22_2bcf422095c8b50821cf3d6908121374.jpeg" alt="Обложка" class="cover">
+            <img src="https://elemsocial.com/Content/Avatars/61ef559ae996c65f3af67b51752f30d458bb268f79192d73106eacab9f18612879da0c0db00df63f63c1326992b50b05.jpg" alt="Аватар" class="avatar">
+        </div>
+        <div class="air"></div>
+        <div class="nameContainer">
+            <p class="name">----</p>
+            <div id="userIcons"></div>
+        </div>
+        <p class="username">@----</p>
+        <div class="subscribers">
+            <button class="left"><p class="title">Подписки</p><p class="count" id="subscriptions">-</p></button>
+            <button class="center"><p class="title">Подписчики</p><p class="count" id="subscribers">-</p></button>
+            <button class="right"><p class="title">Посты</p><p class="count" id="posts">-</p></button>
+        </div>
+        <div class="description">
+            <div class="Title">Описание</div>
+            Загрузка...
+        </div>
+        <!--<div class="icons">
+            <div class="icon">
+                <img src="assets/svg/network.svg">
+                <p>Repo</p>
+            </div>
+        </div>-->
+    </div>
+</div>
+
+<div id="auth" class="authorize-opened">
+    <h2>Авторизация</h2>
+    <div id="values">
+        <input id="email" type="email" placeholder="Почта"><br>
+        <input id="password" type="password" placeholder="Пароль"><br>
+    </div>
+    <button id="confirm">Войти</button>
+    <button id="method-other">Регистрация</button>
+</div>
+
+<div id="reg" class="authorize-closed">
+    <h2>Регистрация</h2>
+    <div id="values">
+        <input id="email" type="email" placeholder="Почта">
+        <input id="password" type="password" placeholder="Пароль">
+        <input id="password-confirm" type="password" placeholder="Повтор пароля">
+        <input id="username" type="username" placeholder="@уникальное_имя">
+    </div>
+    <div
+        class="h-captcha"
+        style="transform: scale(0.7);transform-origin: 0 0;"
+        data-sitekey="29c6b1c2-7e78-43ec-8bf8-5de49c58c54a"
+    ></div>
+    <button id="confirm">Продолжить</button>
+    <button id="method-other">К входу</button>
+</div>
+
+<div id="notification">
+    <img src="https://elemsocial.com/static_sys/Images/DarkLogo.svg">
+    <p class="title">Title</p>
+    <p class="description">Description</p>
+</div>
+
+</body>
+<script src="js/Crypto.js"></script>
+<script src="js/app.js"></script>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Element</title>
+    <link rel="stylesheet" href="UI/styles.css">
+</head>
+<body>
+
+<header>
+    <input id="searcher" placeholder="Поиск">
+    <img src="assets/images/no-avatar.png">
+</header>
+
+<div class="navbar">
+    <button>
+        <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 2px;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house">
+            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+            <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        </svg>
+        <p>Главная</p>
+    </button>
+    <button onclick="document.querySelector('#messanger').classList.toggle('opened')">
+        <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 2px;" width="24" height="24" viewBox="0 0 24 24" fill="currentcolor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <p>Месенджер</p>
+    </button>
+    <button onclick="document.querySelector('#music').classList.toggle('opened')">
+        <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 2px;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-music-2">
+            <circle cx="8" cy="18" r="4"/>
+            <path d="M12 18V2l7 4"/>
+        </svg>
+        <p>Музыка</p>
+    </button>
+    <button>
+        <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 2px;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings">
+            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+            <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <p>Настройки</p>
+    </button>
+    <button onclick="document.querySelector('#gold').classList.toggle('opened')">
+        <p>Подписка</p>
+    </button>
+</div>
+
+<div class="air"></div>
+
+<div class="Posts scrollY">
+    <div class="Post" id="sys">
+        <textarea placeholder="Текст поста..." rows="4"></textarea>
+        <div class="buttons-container">
+            <button id="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file">
+                    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+                </svg>
+            </button>
+            <button id="send-post">Отправить</button>
+        </div>
+    </div>
+</div>
+
+<div id="quick_profile" style="transition: 0.3s;opacity: 0;display: none;">
+    <div class="images">
+        <img src="https://elemsocial.com/Content/Covers/Cover_2024-08-07 02_07_22_2bcf422095c8b50821cf3d6908121374.jpeg" alt="Обложка" class="cover">
+        <img src="https://elemsocial.com/Content/Avatars/61ef559ae996c65f3af67b51752f30d458bb268f79192d73106eacab9f18612879da0c0db00df63f63c1326992b50b05.jpg" alt="Аватар" class="avatar">
+    </div>
+    <div class="air"></div>
+    <div class="nameContainer">
+        <p class="name">----</p>
+        <div id="userIcons"></div>
+    </div>
+    <p class="username">@----</p>
+    <div class="subscribers">
+        <button class="left"><p class="title">Подписки</p><p class="count" id="subscriptions">-</p></button>
+        <button class="center"><p class="title">Подписчики</p><p class="count" id="subscribers">-</p></button>
+        <button class="right"><p class="title">Посты</p><p class="count" id="posts">-</p></button>
+    </div>
+    <div class="description">
+        <div class="Title">Описание</div>
+        Загрузка...
+    </div>
+    <!--<div class="icons">
+        <div class="icon">
+            <img src="assets/svg/network.svg">
+            <p>Repo</p>
+        </div>
+    </div>-->
+</div>
+
+<div class="modal-window" id="messanger">
+    <div class="header">
+        <p>Мессенджер</p>
+        <button id="close" onclick="this.parentNode.parentNode.classList.toggle('opened')">✕</button>
+    </div>
+    <div id="chats">
+        <div class="title">Чаты</div>
+    </div>
+    <div id="chat">
+        <div id="info">
+            <p class="name"></p>
+            <p class="status"></p>
+        </div>
+        <div class="messages">
+            <div class="message my">
+                Папки
+            </div>
+            <div class="message">
+                Папкиd
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-window" id="gold">
+    <div class="header">
+        <p>Подписка</p>
+        <button id="close" onclick="this.parentNode.parentNode.classList.toggle('opened')">✕</button>
+    </div>
+    <div class="gold-preview">
+        <img src="https://elemsocial.com/static_sys/Images/SubscriptionLogo.svg" class="image">
+        <p class="status">1 месяц / 0. 1 е-балл</p>
+    </div>
+    <div class="tab advantages">
+        <div class="item" id="increased-limits">Увеличенные лимиты</div>
+        <div class="item" id="unique-icon" data-json="{'src': 'GoldSub_Icon.mp4', 'desc': 'У вас в профиле будет уникальный значок, он так же будет виден на посте.'}">Уникальный значок</div>
+        <div class="item" id="unique-theme" data-json="{'src': 'GoldSub_Theme.mp4', 'desc': 'У вас будет дополнительная золотая тема.'}">Уникальная тема</div>
+        <div class="item" id="ad-deletion" data-json="{'src': 'GoldSub_Ad.mp4', 'desc': 'Вся реклама которая есть будет скрыта для вас.'}">Удаление рекламы</div>
+        <div class="item" id="special-list" data-json="{'src': 'GoldSub_List.mp4', 'desc': 'Ваш аккаунт будет добавлен в особый список на главной странице.'}">Особый список</div>
+    </div>
+    <div id="form" class="close">
+        <p style="margin-bottom: 10px;">Введите код подарка</p>
+        <input type="text" id="code" placeholder="XXXXXXX-XXXXX-XXXXX"><br>
+        <button id="activate">Активировать</button>
+    </div>
+    <div class="buttons">
+        <button id="buy-gold">Купить за 0.1 е-балл</button>
+        <button id="activate-gold">Активировать</button>
+    </div>
+</div>
+
+<div class="modal-window" id="music">
+    <div class="header">
+        <p>Музыка</p>
+        <button id="close" onclick="this.parentNode.parentNode.classList.toggle('opened')">✕</button>
+    </div>
+    <div class="player">
+        <audio autoplay></audio>
+        <img class="image" src="assets/images/no-music-cover.jpg">
+        <p id="name">Название</p>
+        <p id="artist">Исполнитель</p>
+        <div id="icons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        </div>
+    </div>
+
+    <div class="title">Любимые</div>
+    <div class="favorites"></div>
+    <div class="title">Новые</div>
+    <div class="latest"></div>
+    <div class="title">Случайные</div>
+    <div class="random"></div>
+</div>
+
+<div id="notification">
+    <img src="https://elemsocial.com/static_sys/Images/DarkLogo.svg">
+    <p class="title">Title</p>
+    <p class="description">Description</p>
+</div>
+
+</body>
+<script src="js/Crypto.js"></script>
+<script src="js/app.js"></script>
+</html>
