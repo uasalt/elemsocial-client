@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Element</title>
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <style>
 @font-face {
@@ -291,7 +290,7 @@ body {
 <body>
 
 <div id="lastUsers" style="display: none;">
-    <div id="show_profile" style="transition: 0.3s;opacity: 0;">
+    <div id="show_profile" style="transition: 0.3s;opacity: 0;visibility: hidden;">
         <div class="images">
             <img src="https://elemsocial.com/Content/Covers/Cover_2024-08-07 02_07_22_2bcf422095c8b50821cf3d6908121374.jpeg" alt="Обложка" class="cover">
             <img src="https://elemsocial.com/Content/Avatars/61ef559ae996c65f3af67b51752f30d458bb268f79192d73106eacab9f18612879da0c0db00df63f63c1326992b50b05.jpg" alt="Аватар" class="avatar">
@@ -338,11 +337,6 @@ body {
         <input id="password-confirm" type="password" placeholder="Повтор пароля">
         <input id="username" type="username" placeholder="@уникальное_имя">
     </div>
-    <div
-        class="h-captcha"
-        style="transform: scale(0.7);transform-origin: 0 0;"
-        data-sitekey="29c6b1c2-7e78-43ec-8bf8-5de49c58c54a"
-    ></div>
     <button id="confirm">Продолжить</button>
     <button id="method-other">К входу</button>
 </div>
