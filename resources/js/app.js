@@ -1015,7 +1015,7 @@ function load_page(send) {
     }
 }
 
-if (localStorage.getItem('first-start') == 'true' || !localStorage.getItem('first-start') == null) {
+if (localStorage.getItem('first-start') == null || localStorage.getItem('first-start') == 'true') {
     fetch('https://raw.githubusercontent.com/uasalt/elemsocial-client/refs/heads/main/resources/config.json')
         .then(response => {
           if (!response.ok) {
