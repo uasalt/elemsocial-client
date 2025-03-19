@@ -1,7 +1,7 @@
 # elemsocial-client
 
 ## Requirements
-NodeJS
+• NodeJS
 
 ## Installing
 #### Windows:
