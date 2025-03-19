@@ -385,6 +385,7 @@ function checkUpdates() {
                                 <p>${truncateText(user.name)}</p>`
                                 usr.addEventListener('mouseenter', () => {
                                     document.querySelector('#show_profile').style.opacity = 1
+                                    document.querySelector('#show_profile').style.visibility = '1visible'
                                     send({
                                         type: 'social',
                                         action: 'get_profile',
@@ -394,6 +395,7 @@ function checkUpdates() {
                                 
                                 usr.addEventListener('mouseleave', () => {
                                     document.querySelector('#show_profile').style.opacity = 0
+                                    document.querySelector('#show_profile').style.visibility = 'hidden'
                                 });
                                 document.querySelector('#lastUsers').appendChild(usr)
                             })
