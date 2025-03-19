@@ -1,2 +1,2 @@
-npm i
+npm install electron
 npm start
