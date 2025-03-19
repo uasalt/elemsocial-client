@@ -172,7 +172,7 @@ function checkUpdates() {
         const musicModal = document.querySelector("#music");
 
         musicModal.querySelector('.favorites').addEventListener("scroll", () => {
-            if (musicModal.querySelector('.favorites').scrollLeft + musicModal.querySelector('.favorites').clientWidth >= musicModal.querySelector('.favorites').scrollWidth - 1) {
+            if (musicModal.querySelector('.favorites').scrollLeft + musicModal.querySelector('.favorites').clientWidth >= musicModal.querySelector('.favorites').scrollWidth - 10) {
                 send({
                     type: 'social',
                     action: 'load_songs',
@@ -182,7 +182,7 @@ function checkUpdates() {
             }
         });
         musicModal.querySelector('.latest').addEventListener("scroll", () => {
-            if (musicModal.querySelector('.latest').scrollLeft + musicModal.querySelector('.latest').clientWidth >= musicModal.querySelector('.latest').scrollWidth - 1) {
+            if (musicModal.querySelector('.latest').scrollLeft + musicModal.querySelector('.latest').clientWidth >= musicModal.querySelector('.latest').scrollWidth - 10) {
                 send({
                     type: 'social',
                     action: 'load_songs',
@@ -192,7 +192,7 @@ function checkUpdates() {
             }
         });
         musicModal.querySelector('.random').addEventListener("scroll", () => {
-            if (musicModal.querySelector('.random').scrollLeft + musicModal.querySelector('.random').clientWidth >= musicModal.querySelector('.random').scrollWidth - 1) {
+            if (musicModal.querySelector('.random').scrollLeft + musicModal.querySelector('.random').clientWidth >= musicModal.querySelector('.random').scrollWidth - 10) {
                 send({
                     type: 'social',
                     action: 'load_songs',
@@ -251,12 +251,12 @@ function checkUpdates() {
         })
     }
 
-    var url = 'wss://wselem.xyz:8880';
+    var url = 'wss://wselem.xyz:8880/user_api';
     fetch("https://ipapi.co/json/")
     .then(response => response.json())
     .then(data => {
         if (data.country_name == 'Ukraine') {
-            url = 'wss://wselem.xyz:8880';
+            url = 'wss://wselem.xyz:8880/user_api';
         } else {
             url = 'wss://bypass.wselem.xyz:8880';
         }
@@ -539,6 +539,12 @@ function checkUpdates() {
                                         content += `
                                         <img src="${urls.postPhoto}/${image.file_name}" alt="Фото из поста" ${style} class='image'>`
                                     })
+                                } else if (item.content.Video) {
+                                    var size = scalePhoto(item.content.Video.width, item.content.Video.height)
+                                    content += `
+                                    <video controls alt="Видео из поста" class='video'>
+                                        <source src="${urls.postVideo}/${item.content.Video.file_name}">
+                                    </video>`
                                 }
                                 post.innerHTML += `
                                 <div class="user">
@@ -746,6 +752,7 @@ const urls = {
     avatars: "https://elemsocial.com/Content/Avatars",
     covers: "https://elemsocial.com/Content/Covers",
     postPhoto: "https://elemsocial.com/Content/Posts/Images",
+    postVideo: "https://elemsocial.com/Content/Posts/Video/",
     postInteraction: "https://elemsocial.com/System/API/PostInteraction.php",
     share: "https://share.elemsocial.com",
     notifications: "https://elemsocial.com/System/API/Notifications.php",
@@ -1006,4 +1013,27 @@ function load_page(send) {
             action: 'load_chats'
         }), 2500)
     }
+}
+
+if (localStorage.getItem('first-start') == 'true' || !localStorage.getItem('first-start') == null) {
+    fetch('https://raw.githubusercontent.com/uasalt/elemsocial-client/refs/heads/main/resources/config.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Ошибка HTTP: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+            list = []
+            data['hidden-users'].forEach(item => {
+                list.push(item.toString())
+            })
+            console.log('Configs updated: ', data)
+            localStorage.setItem('hiddenUsers', JSON.stringify(list))
+            localStorage.setItem('first-start', true)
+        })
+        .catch(error => {
+          console.error('Ошибка:', error);
+        });
+      
 }

@@ -261,6 +261,12 @@ header {
         height: 100%;
         width: 100%;
     }
+    .video {
+        border-radius: 10px;
+        margin-top: 10px;
+        max-width: 500px;
+        max-height: 500px;
+    }
     .image::before {
         filter: blur(20px);
         position: absolute;
@@ -381,6 +387,7 @@ header {
     height: 60%;
     border-radius: 10px;
     overflow-y: scroll;
+    overflow-x: hidden;
     margin-left: -50px;
     opacity: 0;
     transition: margin-left, opacity 0.3s;
@@ -509,6 +516,7 @@ header {
         display: inline-flex;
         overflow-x: scroll;
         width: 100%;
+        margin-left: 20px;
         .item {
             margin-left: 10px;
             cursor: pointer;
