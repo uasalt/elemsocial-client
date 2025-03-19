@@ -127,7 +127,7 @@ function checkUpdates() {
             }
         });
     }    
-    if (location.pathname == '/auth.html' || location.pathname == "/D:/desktop/e/resources/auth.html") {
+    if (window.location.pathname.split("/").pop() == 'auth.html') {
         var authDiv = document.querySelector('#auth')
         var regDiv = document.querySelector('#reg')
         var notify = document.querySelector('#notification')
@@ -439,7 +439,7 @@ function checkUpdates() {
                         document.querySelector('#show_profile').querySelector('.name').innerHTML = data.name
                         document.querySelector('#show_profile').querySelector('.username').innerHTML = data.username
                     } else if (decryptedData.type === "connect" && decryptedData.status === 'success' && window.location.pathname.split("/").pop() == 'index.html') {
-                        load_page(send)
+                        load_page()
                         localStorage.setItem('udata', JSON.stringify(decryptedData.accountData))
                         document.querySelector('header').querySelector('img').src = `${urls.avatars}/${decryptedData.accountData.avatar}`
                     } else if (decryptedData.type === "messenger" && decryptedData.action === 'load_chats' && window.location.pathname.split("/").pop() == 'index.html') {
@@ -664,6 +664,9 @@ function checkUpdates() {
                                 action: 'connect',
                                 S_KEY: localStorage.getItem('S-Key')
                             })
+                        } else {
+                            load_page()
+                            console.log('asdasd')
                         }
                         processQueue();
                     }
@@ -767,7 +770,7 @@ function truncateText(text) {
     return text;
 }
 
-function load_page(send) {
+function load_page() {
     if (window.location.pathname.split("/").pop() == 'auth.html') {
         var authDiv = document.querySelector('#auth')
         var regDiv = document.querySelector('#reg')
