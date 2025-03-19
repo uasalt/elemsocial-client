@@ -1,2 +1,3 @@
-npm install electron
-npm start
+@echo off
+call npm i
+call npm start
