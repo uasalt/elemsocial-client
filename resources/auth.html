@@ -12,30 +12,61 @@
 }
 
 body {
-    background-color: rgb(15, 15, 15);
+    background-color: rgb(5, 5, 5);
     font-family: 'Monaco';
-    color: rgb(210, 210, 210);
+    color: rgb(180, 180, 180);
     margin: 0;
+}
+
+* {
+    user-select: none;
 }
     
 #auth {
-    color: white;
+    color: rgb(210, 210, 210);
     position: fixed;
-    width: 370px;
     border-radius: 10px;
     padding: 30px;
-    height: 230px;
     text-align: center;
-    box-shadow: 15px 15px 50px 8px rgb(50, 50, 50);
+    box-shadow: 0 0 60px 10px rgb(20, 20, 30);
+    display: inline-flex;
     transition: margin-left 0.5s ease, opacity 0.5s;
     input {
         margin: 5px;
         border: none;
-        border-radius: 5px;
-        padding: 5px;
-        padding-left: 10px;
-        background-color: rgb(40, 40, 40);
+        background-color: transparent;
+        padding: 8px;
+        outline: none;
         color: var(--text-color);
+        border-bottom: 1px rgb(35, 35, 35) solid;
+        transition: border-bottom 0.3s;
+    }
+    input#email {
+        position: relative;
+        left: -24px;
+    }
+    input#password {
+        position: relative;
+        left: -30px;
+    }
+    label {
+        font-size: 12px;
+        position: relative;
+        color: rgb(80, 80, 80);
+    }
+    label#email {
+        left: 37px;
+    }
+    label#password {
+        left: 40px;
+    }
+    #values.input:focus-within + label {
+        color: rgb(210, 210, 210);
+        top: -15px;
+    }
+    input:focus {
+        border-bottom: 1px rgb(55, 118, 255) solid;
+        transition: border-bottom 0.3s;
     }
     h2 {
         font-size: 28px;
@@ -50,72 +81,24 @@ body {
         color: var(--text-color);
         cursor: pointer;
     }
-    #method-other {
-        border: none;
-        background-color: transparent;
-        height: 30px;
-        width: 184px;
-        margin-top: 5px;
-        color: rgb(130, 130, 130);
-        cursor: pointer;
+    .left {
+        width: 200px;
+        margin-top: 30px;
+        animation: heartbeat 3.5s infinite;
+        img {
+            width: 100px; height: 100px;
+        }
     }
 }
-
-.authorize-opened {
-    margin-left: 0px;
-    opacity: 1;
-}
-
-#auth.authorize-closed {
-    margin-left: 370px;
-    opacity: 0;
-}
-
-#reg.authorize-closed {
-    margin-left: -370px;
-    opacity: 0;
-}
-
-#reg {
-    color: white;
-    position: fixed;
-    width: 370px;
-    border-radius: 10px;
-    padding: 30px;
-    height: 300px;
-    text-align: center;
-    box-shadow: 15px 15px 50px 8px rgb(50, 50, 50);
-    transition: margin-left 0.5s ease, opacity 0.5s;
-    input {
-        margin: 5px;
-        border: none;
-        border-radius: 5px;
-        padding: 5px;
-        padding-left: 10px;
-        background-color: rgb(40, 40, 40);
-        color: var(--text-color);
+@keyframes heartbeat {
+    0% {
+        transform: scale(0.95);
     }
-    h2 {
-        font-size: 28px;
+    50% {
+        transform: scale(1);
     }
-    #confirm {
-        margin-top: 20px;
-        border: none;
-        background-color: rgb(30, 95, 216);
-        width: 184px;
-        border-radius: 5px;
-        height: 30px;
-        color: var(--text-color);
-        cursor: pointer;
-    }
-    #method-other {
-        border: none;
-        background-color: transparent;
-        height: 30px;
-        width: 184px;
-        margin-top: 5px;
-        color: rgb(130, 130, 130);
-        cursor: pointer;
+    100% {
+        transform: scale(0.95);
     }
 }
 
@@ -259,6 +242,7 @@ body {
         }
     }
 }
+
 #notification {
     position: fixed;
     border-radius: 10px 0 0 0;
@@ -292,8 +276,8 @@ body {
 <div id="lastUsers" style="display: none;">
     <div id="show_profile" style="transition: 0.3s;opacity: 0;visibility: hidden;">
         <div class="images">
-            <img src="https://elemsocial.com/Content/Covers/Cover_2024-08-07 02_07_22_2bcf422095c8b50821cf3d6908121374.jpeg" alt="Обложка" class="cover">
-            <img src="https://elemsocial.com/Content/Avatars/61ef559ae996c65f3af67b51752f30d458bb268f79192d73106eacab9f18612879da0c0db00df63f63c1326992b50b05.jpg" alt="Аватар" class="avatar">
+            <img src="assets/images/no-cover.png" alt="Обложка" class="cover">
+            <img src="assets/images/no-avatar.png" alt="Аватар" class="avatar">
         </div>
         <div class="air"></div>
         <div class="nameContainer">
@@ -310,35 +294,24 @@ body {
             <div class="Title">Описание</div>
             Загрузка...
         </div>
-        <!--<div class="icons">
-            <div class="icon">
-                <img src="assets/svg/network.svg">
-                <p>Repo</p>
-            </div>
-        </div>-->
     </div>
 </div>
 
-<div id="auth" class="authorize-opened">
-    <h2>Авторизация</h2>
-    <div id="values">
-        <input id="email" type="email" placeholder="Почта"><br>
-        <input id="password" type="password" placeholder="Пароль"><br>
+<div id="auth">
+    <div class="left">
+        <img src="assets/images/logo.png" alt="Лого">
+        <h2>Element</h2>
     </div>
-    <button id="confirm">Войти</button>
-    <button id="method-other">Регистрация</button>
-</div>
-
-<div id="reg" class="authorize-closed">
-    <h2>Регистрация</h2>
-    <div id="values">
-        <input id="email" type="email" placeholder="Почта">
-        <input id="password" type="password" placeholder="Пароль">
-        <input id="password-confirm" type="password" placeholder="Повтор пароля">
-        <input id="username" type="username" placeholder="@уникальное_имя">
+    <div class="right">
+        <h2>Вход</h2>
+        <div id="values">
+            <label id="email">Почта</label>
+            <input id="email" type="email" placeholder=" "><br>
+            <label id="password">Пароль</label>
+            <input id="password" type="password" placeholder=" "><br>
+        </div>
+        <button id="confirm">Войти</button>
     </div>
-    <button id="confirm">Продолжить</button>
-    <button id="method-other">К входу</button>
 </div>
 
 <div id="notification">
@@ -348,6 +321,7 @@ body {
 </div>
 
 </body>
+<script src="js/msgpack.js"></script>
 <script src="js/Crypto.js"></script>
 <script src="js/app.js"></script>
 </html>

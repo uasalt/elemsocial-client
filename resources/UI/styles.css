@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: rgb(15, 15, 15);
+    background-color: rgb(5, 5, 5);
     font-family: 'Monaco';
     color: rgb(210, 210, 210);
     margin: 0;
@@ -25,6 +25,7 @@ body {
     background-color: rgb(20, 20, 20);
     top: 90px;
     .subscribers {
+        text-align: center;
         p {
             margin: 0;
         }
@@ -70,6 +71,9 @@ body {
     .icons {
         overflow-x: scroll;
         margin-top: 5px;
+        ::-webkit-scrollbar {
+            display: none;
+        }
         .icon {
             background-color: rgb(30, 30, 30);
             border: 1px rgb(40, 40, 40) solid;
@@ -88,7 +92,7 @@ body {
         }
     }
     .images {
-         .cover {
+        .cover {
             border-radius: 10px;
             border: 1px rgb(40, 40, 40) solid;
             width: 340px;
@@ -116,16 +120,24 @@ body {
     }
     .nameContainer {
         display: inline-flex;
+        text-align: center;
         .name {
             margin: 0;
             margin-right: 5px;
             color: rgb(220, 220, 220);
+        }
+        
+        svg, img:nth-child(n + 2) {
+            width: 18px;
+            height: 18px;
+            margin-bottom: -3px;
         }
     }
     .username {
         color: rgb(220, 220, 220);
         font-size: 12px;
         margin-top: 3px;
+        text-align: center;
     }
 }
 
@@ -166,7 +178,7 @@ header {
     padding-bottom: 10px;
     z-index: 9999;
     backdrop-filter: blur(5px);
-    box-shadow: 0 0 30px 5px rgb(40, 40, 40);
+    box-shadow: 0 0 30px 5px rgb(15, 15, 15);
     img {
         width: 35px;
         height: 35px;
@@ -193,6 +205,26 @@ header {
         outline-offset: 5px;
         transition: outline-offset 0.3s;
     }
+    .EBalls {
+        display: inline-flex;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: rgba(43, 30, 56, 0.3);
+        cursor: pointer;
+        .ui {
+            border-radius: 25px;
+            width: 30px;
+            height: 15px;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            background-color: rgba(132, 0, 255, 0.4);
+        }
+        .count {
+            margin-top: 5px;
+            margin-left: 8px;
+            font-size: 14px;
+        }
+    }
 }
 .air {
     margin-top: 80px;
@@ -208,6 +240,7 @@ header {
     text-align: center;
     overflow: hidden;
     overflow-y: scroll;
+    height: 100%;
 }
 
 .Post:nth-child(n+2) {
@@ -215,10 +248,10 @@ header {
 }
 
 .Post {
-    background-color: rgb(25, 25, 25);
+    background-color: rgb(10, 10, 10);
     padding: 10px;
     border-radius: 10px;
-    border: 1px rgb(45, 45, 45) solid;
+    border: 1px rgb(15, 15, 15) solid;
     text-align: left;
     width: 500px;
     word-wrap: break-word;
@@ -249,7 +282,7 @@ header {
             padding-right: 15px;
             color: rgb(220, 220, 220);
             border-radius: 5px;
-            background-color: rgb(35, 35, 35);
+            background-color: rgb(15, 15, 15);
         }
         
     }
@@ -310,6 +343,11 @@ header {
             top: -45px;
             left: 55px;
         }
+        svg, img:nth-child(n + 2) {
+            width: 18px;
+            height: 18px;
+            margin-bottom: -3px;
+        }
     }
     #text {
         margin: 0;
@@ -319,9 +357,9 @@ header {
     .interaction-container button {
         display: inline-flex;
         cursor: pointer;
-        border: 1px rgb(40, 40, 40) solid;
+        border: 1px rgb(25, 25, 25) solid;
         border-radius: 8px;
-        background: rgb(30, 30, 30);
+        background: rgb(15, 15, 15);
         padding: 8px;
         margin-top: 11px;
         padding-top: 11px;
@@ -340,10 +378,6 @@ header {
     .left {
         border-radius: 0 0 0 0;
     }
-    .interaction-container button:active {
-        /*animation: activeAnim 0.5s;
-        transition: 0.3s;*/
-    }
     .interaction-container .active {
         animation: activeAnim 0.5s;
         background-color: rgb(55, 20, 90);
@@ -353,7 +387,7 @@ header {
 }
 
 .navbar {
-    position: absolute;
+    position: fixed;
     top: 90px;
     left: 50px;
     width: 240px;
@@ -377,6 +411,46 @@ header {
             margin-left: 5px;
         }
     }
+    #ad {
+        background-image: url("../assets/images/ADBG-1.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        padding: 8px;
+        margin-top: 10px;
+        .tag {
+            display: inline-block;
+            background-color: rgb(46 0 105 / 30%);
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .text {
+            font-size: 14px;
+        }
+        button {
+            justify-content: center;
+            border: none;
+            background-color: rgba(79, 0, 182, 0.158);
+            height: 25px;
+            margin-top: 10px;
+        }
+        .line {
+            font-size: 14px;
+            padding-left: 10px;
+            text-indent: -10px;
+        }
+    }
+    #ad[nobg] {
+        background-image: none;
+        background-color: rgb(35, 35, 35);
+        border: 1.5px rgb(50, 50, 50) solid;
+        .tag {
+            background-color: rgba(87, 87, 87, 0.3);
+        }
+    }
 }
 
 .modal-window {
@@ -396,6 +470,7 @@ header {
         text-align: right;
         height: 20px;
         margin-bottom: 5px;
+        z-index: 9;
         p {
             text-align: left;
             margin: 0;
@@ -537,34 +612,202 @@ header {
             font-size: 13px;
         }
     }
-    .player {
-        position: fixed;
-        left: 5px;
-        top: 92%;
-        background: rgb(20, 20, 20);
+}
+.player {
+    position: fixed;
+    left: 5px;
+    top: 92%;
+    background: rgb(20, 20, 20);
+    height: 50px;
+    width: 97.5%;
+    padding: 10px;
+    border: 1px rgb(40, 40, 40) solid;
+    border-radius: 10px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    .image {
+        width: 50px;
         height: 50px;
-        width: 350px;
-        padding: 10px;
-        border: 1px rgb(40, 40, 40) solid;
         border-radius: 10px;
-        .image {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
+    }
+    #name {
+        position: relative;
+        margin: 0;
+        top: -51px;
+        left: 60px;
+    }
+    #artist {
+        position: relative;
+        margin: 0;
+        top: -48px;
+        left: 60px;
+        font-size: 12px;
+        color: rgb(90, 90, 90);
+    }
+    #icons {
+        position: relative;
+        text-align: center;
+        top: -85px;
+    }
+    .timeline {
+        display: inline-flex;
+        position: relative;
+        justify-content: center;
+        top: -89px;
+        width: 100%;
+        input[type=range] {
+            width: 345px;
+            height: 5px;
+            margin-top: 5px;
         }
-        #name {
-            position: relative;
+        p {
             margin: 0;
-            top: -51px;
-            left: 60px;
-        }
-        #artist {
-            position: relative;
-            margin: 0;
-            top: -48px;
-            left: 60px;
             font-size: 12px;
-            color: rgb(90, 90, 90);
+        }
+    }
+}
+.player:hover {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.comments {
+    position: fixed;
+    top: 100px;
+    padding: 15px;
+    border-radius: 8px;
+    right: 8%;
+    width: 490px;
+    max-height: 450px;
+    border: 1px rgb(20, 20, 20) solid;
+    background-color: rgb(10, 10, 10);
+    overflow-y: scroll;
+    transition: opacity 0.3s;
+    input {
+        padding: 10px;
+        border: none;
+        border-radius: 20px 0 0 20px;
+        position: relative;
+        top: -4px;
+        width: 86.894%;
+        background-color: rgb(35, 35, 35);
+        color: rgb(210, 210, 210);
+        outline: none;
+    }
+    button {
+        position: relative;
+        border: none;
+        top: 2px;
+        height: 35px;
+        border-radius: 0 20px 20px 0;
+        padding-right: 10px;
+        background-color: rgb(35, 35, 35);
+        color: rgb(210, 210, 210);
+        cursor: pointer;
+    }
+    .commentsd {
+        .comment {
+            background-color: rgb(15, 15, 15);
+            padding: 6px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            #user {
+                height: 55px;
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                }
+                #name {
+                    position: relative;
+                    top: -65px;
+                    left: 58px;
+                }
+                #date {
+                    font-size: 12px;
+                    color: rgb(80, 80, 80);
+                    position: relative;
+                    top: -80px;
+                    left: 58px;
+                }
+            }
+        }
+    }
+}
+
+#settings {
+    input[type=file] {display: none;}
+    #avatar {
+        border-radius: 100px;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 140px;
+        margin-left: -55px;
+        border: 8px rgb(20, 20, 20) solid;
+        cursor: pointer;
+    }
+    #cover {
+        border-radius: 8px;
+        width: 400px;
+        height: 155px;
+        cursor: pointer;
+    }
+    .center {
+        text-align: center;
+    }
+    #username {
+        font-size: 13px;
+        color: rgb(150, 150, 150);
+    }
+    input {
+        text-align: center;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        color: white;
+        font-size: 18px;
+        transition: 0.3s;
+    }
+    input:focus {
+        background-color: rgb(30, 30, 30);
+        border-radius: 5px;
+        border: 1px rgb(50, 50, 50) solid;
+        transition: 0.3s;
+    }
+    .button {
+        display: inline-flex;
+        background-color: rgb(25, 25, 25);
+        padding: 8px;
+        width: 350px;
+        border-radius: 8px;
+        border: 1px rgb(40, 40, 40) solid;
+        margin-bottom: 5px;
+        cursor: pointer;
+        p {
+            margin: 0;
+        }
+        .text {
+            font-size: 12px;
+            margin-top: 4px;
+            margin-left: 5px;
+        }
+        .hidden {
+            position: absolute;
+            text-align: right;
+            font-size: 14px;
+            width: 350px;
+            margin-top: 4px;
+            font-family: Arial;
+            opacity: 0;
+            color: rgb(130, 130, 130);
+            transition: opacity 0.3s;
+        }
+    }
+    .button:hover {
+        .hidden {
+            opacity: 1;
+            transition: opacity 0.3s;
         }
     }
 }
@@ -659,6 +902,19 @@ header {
     }
 }
 
+.musc {
+    position: fixed;
+    top: 0;
+    #viny {
+        width: 250px;
+        height: 250px;
+        animation: spin 3s linear infinite;
+    }
+    #cover {
+        animation: spin 3s linear infinite;
+    }
+}
+
 * {
     user-select: none;
 }
@@ -681,5 +937,64 @@ header {
     100% {
         transform: rotateX(0deg);
         transition: 0.3s;
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+context-menu {
+    position: fixed;
+    display: block;
+    background: rgb(10, 10, 10);
+    border: 1px rgb(20, 20, 20) solid;
+    padding: 8px;
+    width: 200px;
+    z-index: 100;
+    border-radius: 8px;
+    transition: opacity 0.3s;
+    option {
+        font-size: 14px;
+        background: rgb(15, 15, 15);
+        border-radius: 5px;
+        padding: 5px 10px;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 1428px) {}
+@media (max-width: 800px) {
+    .player { display: none; }
+    .navbar {
+        position: fixed;
+        display: inline-flex;
+        width: 98%;
+        top: 93%;
+        left: 0;
+        backdrop-filter: blur(5px);
+        z-index: 10;
+        padding: 10px;
+        text-align: center;
+        border-top: 1px rgb(30, 30, 30) solid;
+        padding-top: 0;
+        #ad {
+            display: none;
+        }
+        button {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            height: 54px;
+            width: 105px;
+            background-color: transparent;
+            border: none;
+            margin: 0 auto;
+            p {
+                margin: 0;
+                margin-top: 8px;
+            }
+        }
     }
 }

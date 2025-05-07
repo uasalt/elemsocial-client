@@ -32,7 +32,6 @@ function importPrivateKey(pk) {
 async function rsaEncrypt(data, pk) {
     try {
         const publicKeyBuffer = importPublicKey(pk);
-        const dataBuffer = new TextEncoder().encode(data);
         const publicKeyE = await crypto.subtle.importKey(
             'spki',
             publicKeyBuffer,
@@ -43,7 +42,7 @@ async function rsaEncrypt(data, pk) {
         const encryptedDataBuffer = await crypto.subtle.encrypt(
             { name: 'RSA-OAEP' },
             publicKeyE,
-            dataBuffer
+            data
         );
         return new Uint8Array(encryptedDataBuffer);
     } catch (error) {
@@ -66,7 +65,7 @@ async function rsaDecrypt(data, privateKey) {
             privateKeyE,
             data
         );
-        return new TextDecoder().decode(decryptedDataBuffer);
+        return decryptedDataBuffer;
     } catch (error) {
         throw new Error('Ошибка расшифровки данных: ' + error.message);
     }
@@ -99,7 +98,6 @@ function base64ToBytes(base64) {
 // AES шифрование
 async function aesEncrypt(data, key) {
     const iv = crypto.getRandomValues(new Uint8Array(16));
-    const encodedData = new TextEncoder().encode(data);
 
     try {
         const importedKey = await crypto.subtle.importKey(
@@ -112,7 +110,7 @@ async function aesEncrypt(data, key) {
         const encryptedBuffer = await crypto.subtle.encrypt(
             { name: 'AES-CBC', iv: iv },
             importedKey,
-            encodedData
+            data
         );
 
         // Объединяем IV и зашифрованные данные в один массив
@@ -143,7 +141,7 @@ async function aesDecrypt(data, key) {
         importedKey,
         encrypted
     );
-    return new TextDecoder().decode(decryptedBuffer);
+    return decryptedBuffer;
 }
 
 // AES расшифровка с использованием ключа в виде Uint8Array
@@ -163,7 +161,7 @@ async function aesDecryptUnit8(data, key) {
         importedKey,
         encrypted
     );
-    return new TextDecoder().decode(decryptedBuffer);
+    return decryptedBuffer;
 }
 
 // AES расшифровка файла
