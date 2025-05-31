@@ -1,0 +1,35 @@
+{
+  "name": "elemsocial-client",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "keywords": [],
+  "author": "uasalt",
+  "license": "ISC",
+  "description": "Element",
+  "devDependencies": {
+    "electron": "^34.5.1",
+    "electron-builder": "^26.0.12",
+    "electron-packager": "^17.1.2"
+  },
+  "homepage": "https://github.com/uasalt/elemsocial-client",
+  "build": {
+    "asar": false,
+    "appId": "com.uasalt.elementclient",
+    "productName": "Element Client",
+    "win": {
+      "icon": "resources/assets/images/logo.png"
+    },
+    "linux": {
+      "icon": "resources/assets/images/logo.png",
+      "maintainer": "uasalt@saltsocial.xyz",
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  }
+}

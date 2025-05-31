@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Element</title>
+</head>
+<style>
+@font-face {
+    font-family: 'Monaco';
+    src: url('UI/Fonts/Bounded-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: rgb(5, 5, 5);
+    font-family: 'Monaco';
+    color: rgb(180, 180, 180);
+    margin: 0;
+}
+
+* {
+    user-select: none;
+}
+    
+#auth {
+    color: rgb(210, 210, 210);
+    position: fixed;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 60px 10px rgb(20, 20, 30);
+    display: inline-flex;
+    transition: margin-left 0.5s ease, opacity 0.5s;
+    input {
+        margin: 5px;
+        border: none;
+        background-color: transparent;
+        padding: 8px;
+        outline: none;
+        color: var(--text-color);
+        border-bottom: 1px rgb(35, 35, 35) solid;
+        transition: border-bottom 0.3s;
+    }
+    input#email {
+        position: relative;
+        left: -24px;
+    }
+    input#password {
+        position: relative;
+        left: -30px;
+    }
+    label {
+        font-size: 12px;
+        position: relative;
+        color: rgb(80, 80, 80);
+    }
+    label#email {
+        left: 37px;
+    }
+    label#password {
+        left: 40px;
+    }
+    #values.input:focus-within + label {
+        color: rgb(210, 210, 210);
+        top: -15px;
+    }
+    input:focus {
+        border-bottom: 1px rgb(55, 118, 255) solid;
+        transition: border-bottom 0.3s;
+    }
+    h2 {
+        font-size: 28px;
+    }
+    #confirm {
+        margin-top: 20px;
+        border: none;
+        background-color: rgb(30, 95, 216);
+        width: 184px;
+        border-radius: 5px;
+        height: 30px;
+        color: var(--text-color);
+        cursor: pointer;
+    }
+    .left {
+        width: 200px;
+        margin-top: 30px;
+        animation: heartbeat 3.5s infinite;
+        img {
+            width: 100px; height: 100px;
+        }
+    }
+}
+@keyframes heartbeat {
+    0% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.95);
+    }
+}
+
+#lastUsers {
+    position: relative;
+    width: 320px;
+    height: 60px;
+    text-align: center;
+    background-color: rgb(20, 20, 20);
+    padding: 5px;
+    padding-bottom: 10px;
+    border-radius: 0 0 10px 10px;
+    border: 1px rgb(10, 10, 10) solid;
+    .user {
+        background-color: transparent;
+        border: none;
+        color: rgb(210, 210, 210);
+        img {
+            border-radius: 40px;
+            width: 40px;
+            height: 40px;
+        }
+        p {
+            color: rgb(120, 120, 120);
+            margin-top: 3px;
+        }
+    }
+    #show_profile {
+        position: fixed;
+        z-index: 999;
+        border: 1px rgb(40, 40, 40) solid;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(20, 20, 20);
+        top: 90px;
+        .subscribers {
+            p {
+                margin: 0;
+            }
+            .title {
+                color: rgb(110, 110, 110);
+            }
+            .left {
+                background-color: rgb(30, 30, 30);
+                border: 1px rgb(40, 40, 40) solid;
+                border-radius: 10px 0 0 10px;
+                padding: 10px;
+            }
+            .center {
+                background-color: rgb(30, 30, 30);
+                border: 1px rgb(40, 40, 40) solid;
+                padding: 10px;
+            }
+            .right {
+                background-color: rgb(30, 30, 30);
+                border: 1px rgb(40, 40, 40) solid;
+                border-radius: 0 10px 10px 0;
+                padding: 10px;
+            }
+            .count {
+                color: rgb(210, 210, 210);
+            }
+        }
+        .description {
+            background-color: rgb(30, 30, 30);
+            border: 1px rgb(40, 40, 40) solid;
+            border-radius: 10px;
+            padding: 8px;
+            text-align: left;
+            margin-top: 5px;
+            font-size: 14px;
+            width: 230px;
+            margin-left: 48px;
+            .Title {
+                color: rgb(130, 130, 130);
+                font-size: 11px;
+            }
+        }
+        .icons {
+            overflow-x: scroll;
+            margin-top: 5px;
+            ::-webkit-scrollbar {
+                display: none;
+            }
+            .icon {
+                background-color: rgb(30, 30, 30);
+                border: 1px rgb(40, 40, 40) solid;
+                border-radius: 10px;
+                text-align: left;
+                img {
+                    position: absolute;
+                    height: 25  px;
+                    width: 25px;
+                    margin-top: 5px;
+                }
+                p {
+                    margin-top: 5px;
+                    margin-left: 35px;
+                }
+            }
+        }
+        .images {
+            .cover {
+                border-radius: 10px;
+                border: 1px rgb(40, 40, 40) solid;
+                width: 340px;
+                height: 135px;
+            }
+            .avatar {
+                position: absolute;
+                top: 80px;
+                left: 125px;
+                border-radius: 100px;
+                width: 100px;
+                height: 100px;
+                border: 4px rgb(40, 40, 40) solid;
+            }
+        }
+        .air {
+            margin-top: 40px;
+        }
+        #userIcons {
+            height: 18px;
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+        .nameContainer {
+            display: inline-flex;
+            .name {
+                margin: 0;
+                margin-right: 5px;
+                color: rgb(220, 220, 220);
+            }
+        }
+        .username {
+            color: rgb(220, 220, 220);
+            font-size: 12px;
+            margin-top: 3px;
+        }
+    }
+}
+
+#notification {
+    position: fixed;
+    border-radius: 10px 0 0 0;
+    background-color: rgb(20, 20, 20);
+    z-index: 99999999999;
+    border: 1px rgb(40, 40, 40) solid;
+    width: 300px;
+    padding: 8px;
+    transition: top 0.3s;
+    .title {
+        position: absolute;
+        margin: 0;
+        top: 10px;
+        left: 60px;
+    }
+    .description {
+        position: absolute;
+        margin: 0;
+        top: 35px;
+        left: 60px;
+        font-size: 12px;
+        color: rgb(90, 90, 90);
+    }
+    img {
+        width: 40px;
+    }
+}
+</style>
+<body>
+
+<div id="root"></div>
+
+</body>
+<script src="js/main.js" type="module"></script>
+</html>
