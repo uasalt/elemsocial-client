@@ -1,3 +1,4 @@
+a
 try {
     await import("./pager.js")
     await import("./custom-elements.js")
